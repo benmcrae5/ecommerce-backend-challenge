@@ -17,7 +17,8 @@ router.get('/:id', async (req, res) => {
   const category = await Category.findAll({
     where: {
       id,
-    }
+    },
+    include: [ProductTag]
   })
   res.json(category)
 });

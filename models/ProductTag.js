@@ -6,14 +6,7 @@ class ProductTag extends Model {}
 
 ProductTag.init(
   {
-    product_id: {
-      type: DataTypes.INTEGER,
-      //References the product model's id...
-    },
-    tag_id: {
-      type: DataTypes.INTEGER,
-      //references the tag model's id...
-    }
+    
   },
   {
     sequelize,

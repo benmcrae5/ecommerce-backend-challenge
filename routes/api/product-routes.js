@@ -5,7 +5,6 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 
 // get all products
 router.get('/', async (req, res) => {
-  // find all products
   // be sure to include its associated Category and Tag data
   const products = await Product.findAll();
   res.json(products);
@@ -26,6 +25,7 @@ router.get('/:id', async (req, res) => {
 
 // create new product
 router.post('/', async (req, res) => {
+  //const { product_name, price, stock, tagIds } = req.body;
   /* req.body should look like this...
     {
       product_name: "Basketball",
@@ -100,6 +100,12 @@ router.put('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
   // delete one product by its `id` value
+  const { id } = req.params;
+  const product = await Category.destroy({
+    where: {
+      id
+    }
+  })
 });
 
 module.exports = router;
