@@ -16,6 +16,9 @@ router.get('/:id', async (req, res) => {
   const tags = await Tag.findAll({
     where: {
       id
+    },
+    include: {
+      model: Product
     }
   });
   res.json(tags);

@@ -6,7 +6,14 @@ const { Product, Category, Tag, ProductTag } = require('../../models');
 // get all products
 router.get('/', async (req, res) => {
   // be sure to include its associated Category and Tag data
-  const products = await Product.findAll();
+  const products = await Product.findAll({
+    include: {
+      model: Category
+    },
+    include: {
+      model: Tag
+    }
+  });
   res.json(products);
 });
 
@@ -18,6 +25,12 @@ router.get('/:id', async (req, res) => {
   const product = await Product.findAll({
     where: {
       id
+    },
+    include: {
+      model: Category
+    },
+    include: {
+      model: Tag
     }
   });
   res.json(product);
@@ -25,8 +38,7 @@ router.get('/:id', async (req, res) => {
 
 // create new product
 router.post('/', async (req, res) => {
-  //const { product_name, price, stock, tagIds } = req.body;
-  /* req.body should look like this...
+  /* req.body should look like this:
     {
       product_name: "Basketball",
       price: 200.00,
