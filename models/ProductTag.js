@@ -5,8 +5,7 @@ const sequelize = require('../config/connection.js');
 class ProductTag extends Model {}
 
 ProductTag.init(
-  {
-  },
+  { },
   {
     sequelize,
     timestamps: false,
